@@ -10,9 +10,12 @@ def f(a):
 if __name__ == "__main__":
     # 共有メモリ（Array）を作成します.
     arr = Array('i', range(10))
-    print arr[:]
+#    print arr[:]
     # サブプロセスを作り、実行します.
-    p = Process(target=f, args=(arr))
+    p = Process(target=f, args=(arr,))
+    #↑Processのargsが１つの時は
+    #","
+    #をつけると、なぜか怒られない...
     p.start()
     p.join()
     # 共有メモリ（Array）から値を取り出します
